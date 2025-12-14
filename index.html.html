@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bora Jogar</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-color: #e60000;
+      font-family: Arial, Helvetica, sans-serif;
+      position: relative;
+    }
+
+    .container {
+      position: absolute;
+      top: 35%;
+      width: 100%;
+      text-align: center;
+    }
+
+    .frase {
+      color: #ffffff;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      color: #ffffff;
+      font-size: 3rem;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    button {
+      position: absolute;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #fff;
+      color: #e60000;
+      font-weight: bold;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="frase">eaí, boca de litro</div>
+    <h1>BORA JOGAR? :D</h1>
+  </div>
+
+  <button id="btnNao">NÃO</button>
+
+  <script>
+    const botao = document.getElementById("btnNao");
+
+    function vibrar() {
+      if (navigator.vibrate) {
+        navigator.vibrate([100, 50, 100]); // padrão de vibração
+      }
+    }
+
+    function moverBotao() {
+      const larguraTela = window.innerWidth;
+      const alturaTela = window.innerHeight;
+
+      const larguraBotao = botao.offsetWidth;
+      const alturaBotao = botao.offsetHeight;
+
+      const novaPosX = Math.random() * (larguraTela - larguraBotao);
+      const novaPosY = Math.random() * (alturaTela - alturaBotao);
+
+      botao.style.left = novaPosX + "px";
+      botao.style.top = novaPosY + "px";
+
+      vibrar();
+    }
+
+    moverBotao();
+
+    botao.addEventListener("mouseenter", moverBotao);
+    botao.addEventListener("touchstart", moverBotao);
+  </script>
+
+</body>
+</html>
